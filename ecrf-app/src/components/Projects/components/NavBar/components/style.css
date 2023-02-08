@@ -1,0 +1,65 @@
+@import "../../../../../utilities.css";
+.navBar {
+  width: 100%;
+  height: 80px;
+  background-color: #4f4f4f;
+  position: absolute;
+  left: 0%;
+  right: 0%;
+  top: 0%;
+  bottom: 0%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  /* border: 1px solid white; */
+  position: absolute;
+  height: 30px;
+  /* margin: auto; */
+}
+.divLeft {
+  width: 111px;
+  height: 30px;
+  /* border: 1px solid yellow; */
+}
+.divRight {
+  width: 94px;
+  height: 30px;
+  /* border: 1px solid white; */
+}
+.barIcon {
+  width: 18px;
+  height: 12px;
+}
+.orbit {
+  width: 75px;
+  height: 30px;
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 30px;
+}
+.textMyProjects {
+  width: 129px;
+  height: 29px;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+}
+.bellIcon {
+  width: 18px;
+  height: 21px;
+}
+.tText {
+  width: 30px;
+  height: 30px;
+  background-color: #d9d9d9;
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+  color: #4f4f4f;
+}
