@@ -9,15 +9,16 @@ const CreateNewBtn = () => {
     width: "100%",
   };
   const btn = {
-    width: "161px",
-    height: "40px",
+    width: "130px",
+    height: "35px",
     background: "rgba(79, 79, 79, 0.4)",
     borderRadius: "10px",
     fontWeight: "500",
-    fontSize: "20px",
+    fontSize: "18px",
     lineHeight: "24px",
     padding: "8px 16px",
     color: "#F8F8F8",
+    marginBottom: "15px",
   };
   return (
     <Box sx={container}>
