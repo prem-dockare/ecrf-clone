@@ -1,11 +1,8 @@
 .tabs {
-  position: absolute;
-  max-width: 100%;
+  width: 100%;
   height: 24px;
-  left: 45px;
-  right: 45px;
-  top: 151px;
   border-bottom: 0.5px solid #a8a8a8;
+  margin-bottom: 20px;
 }
 .flexContainer {
   width: 102px;
