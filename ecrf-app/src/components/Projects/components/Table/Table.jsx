@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import {
   Table,
   Thead,
@@ -17,7 +17,7 @@ import { GetDataContextValues } from "../../contexts/data";
 const TableComponent = () => {
   const [data, setData] = useState([]);
   const { dataset, setDataset } = GetDataContextValues();
-
+  const dataSource = useRef();
   const getData = async () => {
     try {
       const res = await fetch("https://dummyjson.com/products");
@@ -27,7 +27,9 @@ const TableComponent = () => {
         ...pre,
         count: output?.products.length,
         pages: Math.ceil(output?.products.length / pre?.rows),
+        items: output?.products,
       }));
+      output?.products.length && (dataSource.current = output?.products);
     } catch (err) {
       console.log("error ", err.message);
     }
@@ -66,59 +68,51 @@ const TableComponent = () => {
           </Tr>
         </Thead>
         <Tbody>
-          {data.length &&
-            data.map((ele, ind) => {
-              if (ind < dataset?.rows) {
-                return (
-                  <Tr
-                    key={ind}
-                    backgroundColor="rgba(217, 217, 217, 0.3)"
-                    marginBottom="10px"
+          {dataset?.items?.length &&
+            dataset?.items?.map((ele, ind) => (
+              <Tr
+                key={ind}
+                backgroundColor="rgba(217, 217, 217, 0.3)"
+                marginBottom="10px"
+              >
+                <Td
+                  borderTopLeftRadius="10px"
+                  borderBottomLeftRadius="10px"
+                  height={"30px"}
+                  px="20px"
+                  py="13px"
+                >
+                  <Box
+                    display="flex"
+                    alignItems="center"
+                    justifyContent="space-between"
+                    width="100px"
+                    paddingLeft="5px"
                   >
-                    <Td
-                      borderTopLeftRadius="10px"
-                      borderBottomLeftRadius="10px"
-                      height={"30px"}
-                      px="20px"
-                      py="13px"
-                    >
-                      <Box
-                        display="flex"
-                        alignItems="center"
-                        justifyContent="space-between"
-                        width="100px"
-                        paddingLeft="5px"
-                      >
-                        <span style={{ marginRight: "15px" }}>
-                          {ele?.price}
-                        </span>
-                        <img
-                          src="https://img.icons8.com/material-rounded/13/null/menu-2.png"
-                          alt=""
-                        />
-                      </Box>
-                    </Td>
-                    <Td height={"30px"} px="20px" py="13px">
-                      {ele?.brand}
-                    </Td>
-                    <Td height={"30px"} px="20px" py="13px">
-                      {ele?.category}
-                    </Td>
-                    <Td
-                      borderTopRightRadius="10px"
-                      borderBottomRightRadius="10px"
-                      height={"30px"}
-                      px="20px"
-                      py="13px"
-                    >
-                      {ele?.stock}
-                    </Td>
-                  </Tr>
-                );
-              } else {
-                return "";
-              }
-            })}
+                    <span style={{ marginRight: "15px" }}>{ele?.price}</span>
+                    <img
+                      src="https://img.icons8.com/material-rounded/13/null/menu-2.png"
+                      alt=""
+                    />
+                  </Box>
+                </Td>
+                <Td height={"30px"} px="20px" py="13px">
+                  {ele?.brand}
+                </Td>
+                <Td height={"30px"} px="20px" py="13px">
+                  {ele?.category}
+                </Td>
+                <Td
+                  borderTopRightRadius="10px"
+                  borderBottomRightRadius="10px"
+                  height={"30px"}
+                  px="20px"
+                  py="13px"
+                >
+                  {ele?.stock}
+                </Td>
+              </Tr>
+            ))}
         </Tbody>
       </Table>
     </TableContainer>

@@ -8,6 +8,7 @@ export const DataContextProvider = ({ children }) => {
     rows: 10,
     count: 0,
     pages: 0,
+    items: [],
   });
 
   return (
