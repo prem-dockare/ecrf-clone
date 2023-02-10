@@ -1,24 +1,23 @@
 import Pagination from "react-bootstrap/Pagination";
+import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 
 function PaginationDiv() {
+  const arr = new Array(6).fill(1);
+  const container = {
+    width: "15%",
+    // border: "1px solid black",
+  };
   return (
-    <Pagination>
-      <Pagination.First />
-      <Pagination.Prev />
-      <Pagination.Item>{1}</Pagination.Item>
-      <Pagination.Ellipsis />
-
-      <Pagination.Item>{10}</Pagination.Item>
-      <Pagination.Item>{11}</Pagination.Item>
-      <Pagination.Item active>{12}</Pagination.Item>
-      <Pagination.Item>{13}</Pagination.Item>
-      <Pagination.Item disabled>{14}</Pagination.Item>
-
-      <Pagination.Ellipsis />
-      <Pagination.Item>{20}</Pagination.Item>
-      <Pagination.Next />
-      <Pagination.Last />
-    </Pagination>
+    <div
+      style={container}
+      className="d-flex justify-content-between align-items-center "
+    >
+      <ChevronLeftIcon color="red.500" />
+      {arr?.map((ele, ind) => (
+        <p>{ind + 1}</p>
+      ))}
+      <ChevronRightIcon color="red.500" />
+    </div>
   );
 }
 
