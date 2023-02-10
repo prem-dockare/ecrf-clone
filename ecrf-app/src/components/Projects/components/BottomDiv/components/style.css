@@ -7,3 +7,9 @@
 .pageNums:hover {
   cursor: pointer;
 }
+.selectedPage {
+  color: #1b2a37;
+}
+.notAllowed {
+  cursor: not-allowed;
+}

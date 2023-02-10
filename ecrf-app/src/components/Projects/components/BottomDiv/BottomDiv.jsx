@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import PaginationDiv from "./components/Pagination";
 import DropdownComponent from "./components/Dropdown";
 import { GetDataContextValues } from "../../contexts/data";
@@ -26,7 +26,11 @@ const BottomDiv = () => {
       className=" d-flex w-100 justify-content-between align-items-center"
     >
       <p style={text} className="m-0 fw-light">
-        Showing 1-10 of {dataset?.count} Results
+        Showing {(dataset?.page - 1) * dataset?.rows + 1}-
+        {dataset?.page * dataset?.rows <= dataset?.count
+          ? dataset?.page * dataset?.rows
+          : dataset?.count}{" "}
+        of {dataset?.count} Results
       </p>
       <PaginationDiv />
       <div

@@ -16,7 +16,7 @@ import { GetDataContextValues } from "../../contexts/data";
 
 const TableComponent = () => {
   const [data, setData] = useState([]);
-  const { setDataset } = GetDataContextValues();
+  const { dataset, setDataset } = GetDataContextValues();
 
   const getData = async () => {
     try {
@@ -26,7 +26,7 @@ const TableComponent = () => {
       setDataset((pre) => ({
         ...pre,
         count: output?.products.length,
-        pages: output?.products.length / pre?.rows,
+        pages: Math.ceil(output?.products.length / pre?.rows),
       }));
     } catch (err) {
       console.log("error ", err.message);
@@ -68,7 +68,7 @@ const TableComponent = () => {
         <Tbody>
           {data.length &&
             data.map((ele, ind) => {
-              if (ind < 10) {
+              if (ind < dataset?.rows) {
                 return (
                   <Tr
                     key={ind}

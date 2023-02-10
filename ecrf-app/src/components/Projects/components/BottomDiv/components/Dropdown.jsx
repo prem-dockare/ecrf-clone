@@ -1,10 +1,14 @@
 import Dropdown from "react-bootstrap/Dropdown";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./style.css";
 import { GetDataContextValues } from "../../../contexts/data";
 
 function DropdownComponent() {
   const { dataset, setDataset } = GetDataContextValues();
+  useEffect(() => {
+    setDataset((pre) => ({ ...pre, pages: Math.ceil(pre?.count / pre?.rows) }));
+  }, [dataset?.rows]);
+
   const container = {
     width: "94px",
     height: "22px",
@@ -24,15 +28,19 @@ function DropdownComponent() {
       className="d-flex align-items-center outline-none"
     >
       <Dropdown.Toggle style={text} variant="none">
-        10 rows
+        {dataset?.rows} rows
       </Dropdown.Toggle>
 
       <Dropdown.Menu>
-        {[10, 20, 30].map((ele) => (
+        {[10, 20, 30].map((ele, ind) => (
           <Dropdown.Item
-            key={ele}
+            key={ind}
             onClick={() => {
-              setDataset((pre) => ({ ...pre, rows: ele }));
+              setDataset((pre) => ({
+                ...pre,
+                rows: ele,
+                page: 1,  
+              }));
             }}
           >
             {ele}
