@@ -35,7 +35,6 @@ const TableComponent = () => {
         w="100%"
         style={{ borderCollapse: "separate", borderSpacing: "0 5px" }}
       >
-        <TableCaption>Imperial to metric conversion factors</TableCaption>
         <Thead>
           <Tr sx={{ borderCollapse: "none" }}>
             {[

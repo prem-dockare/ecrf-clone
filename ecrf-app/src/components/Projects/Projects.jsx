@@ -3,6 +3,7 @@ import NavBar from "./components/NavBar/NavBar";
 import TabsPanel from "./components/Tabs/Tabs";
 import CreateNewBtn from "./components/CreateNewBtn/CreateNewBtn";
 import TableComponent from "./components/Table/Table";
+import BottomDiv from "./components/BottomDiv/BottomDiv";
 const Projects = () => {
   const containerStyle = {
     position: "absolute",
@@ -18,6 +19,7 @@ const Projects = () => {
         <TabsPanel />
         <CreateNewBtn />
         <TableComponent />
+        <BottomDiv />
       </div>
     </>
   );
