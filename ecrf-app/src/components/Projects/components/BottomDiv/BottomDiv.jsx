@@ -1,6 +1,8 @@
 import React from "react";
 import PaginationDiv from "./components/Pagination";
 import DropdownComponent from "./components/Dropdown";
+import { GetDataContextValues } from "../../contexts/data";
+
 const container = {
   margin: "45px 0",
   // border: "1px solid black",
@@ -17,13 +19,14 @@ const divLst = {
   height: "22px",
 };
 const BottomDiv = () => {
+  const { dataset, setDataset } = GetDataContextValues();
   return (
     <div
       style={container}
       className=" d-flex w-100 justify-content-between align-items-center"
     >
       <p style={text} className="m-0 fw-light">
-        Showing 1-10 of 55 Results
+        Showing 1-10 of {dataset?.count} Results
       </p>
       <PaginationDiv />
       <div

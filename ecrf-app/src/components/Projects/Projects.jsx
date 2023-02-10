@@ -7,7 +7,6 @@ import BottomDiv from "./components/BottomDiv/BottomDiv";
 import { GetDataContextValues } from "./contexts/data";
 import { DataContextProvider } from "./contexts/data";
 const Projects = () => {
-  // console.log(GetDataContextValues());
   const containerStyle = {
     position: "absolute",
     top: "100px",
@@ -19,10 +18,12 @@ const Projects = () => {
     <>
       <NavBar />
       <div style={containerStyle}>
-        <TabsPanel />
-        <CreateNewBtn />
-        <TableComponent />
-        <BottomDiv />
+        <DataContextProvider>
+          <TabsPanel />
+          <CreateNewBtn />
+          <TableComponent />
+          <BottomDiv />
+        </DataContextProvider>
       </div>
     </>
   );

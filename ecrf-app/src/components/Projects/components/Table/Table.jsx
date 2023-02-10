@@ -12,17 +12,25 @@ import {
   TableContainer,
 } from "@chakra-ui/react";
 import { ChevronUpIcon } from "@chakra-ui/icons";
+import { GetDataContextValues } from "../../contexts/data";
 
 const TableComponent = () => {
   const [data, setData] = useState([]);
+  const { setDataset } = GetDataContextValues();
 
   const getData = async () => {
     try {
       const res = await fetch("https://dummyjson.com/products");
       const output = await res.json();
-      setData(output?.products);
-      console.log(data);
-    } catch {}
+      output?.products.length && setData(output?.products);
+      setDataset((pre) => ({
+        ...pre,
+        count: output?.products.length,
+        pages: output?.products.length / pre?.rows,
+      }));
+    } catch (err) {
+      console.log("error ", err.message);
+    }
   };
   useEffect(() => {
     getData();

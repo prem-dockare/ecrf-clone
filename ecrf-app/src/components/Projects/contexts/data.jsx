@@ -1,16 +1,23 @@
-import { CleaningServices } from "@mui/icons-material";
 import { useState, useContext, createContext } from "react";
 
 const DataContext = createContext();
 
-export const DataContextProvider = () => {
-  const [dataset, setDataset] = useState({ page: 1, rows: 10, count: 0 });
+export const DataContextProvider = ({ children }) => {
+  const [dataset, setDataset] = useState({
+    page: 1,
+    rows: 10,
+    count: 0,
+    pages: 0,
+  });
 
-  return <DataContext.Provider value={dataset}></DataContext.Provider>;
+  return (
+    <DataContext.Provider value={{ dataset, setDataset }}>
+      {children}
+    </DataContext.Provider>
+  );
 };
 
 export const GetDataContextValues = () => {
-  const value = useContext(DataContext);
-  console.log(value);
-  //   return { dataset };
+  const { dataset, setDataset } = useContext(DataContext);
+  return { dataset, setDataset };
 };

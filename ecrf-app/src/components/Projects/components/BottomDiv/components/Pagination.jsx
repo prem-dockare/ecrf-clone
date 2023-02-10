@@ -1,8 +1,9 @@
 import Pagination from "react-bootstrap/Pagination";
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
-
+import { GetDataContextValues } from "../../../contexts/data";
 function PaginationDiv() {
-  const arr = new Array(6).fill(1);
+  const { dataset, setDataset } = GetDataContextValues();
+  const arr = new Array(dataset?.pages).fill(1);
   const container = {
     width: "15%",
     // border: "1px solid black",
@@ -12,11 +13,13 @@ function PaginationDiv() {
       style={container}
       className="d-flex justify-content-between align-items-center "
     >
-      <ChevronLeftIcon color="red.500" />
+      <ChevronLeftIcon color="#a8a8a8" className="pageNums" />
       {arr?.map((ele, ind) => (
-        <p>{ind + 1}</p>
+        <p key={ind} className="pageNums">
+          {ind + 1}
+        </p>
       ))}
-      <ChevronRightIcon color="red.500" />
+      <ChevronRightIcon color="#a8a8a8" className="pageNums" />
     </div>
   );
 }

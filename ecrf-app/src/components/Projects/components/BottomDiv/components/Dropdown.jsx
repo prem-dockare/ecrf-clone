@@ -1,9 +1,10 @@
 import Dropdown from "react-bootstrap/Dropdown";
 import { useState } from "react";
 import "./style.css";
+import { GetDataContextValues } from "../../../contexts/data";
 
 function DropdownComponent() {
-  const [rows, setRows] = useState("");
+  const { dataset, setDataset } = GetDataContextValues();
   const container = {
     width: "94px",
     height: "22px",
@@ -31,7 +32,7 @@ function DropdownComponent() {
           <Dropdown.Item
             key={ele}
             onClick={() => {
-              setRows(ele);
+              setDataset((pre) => ({ ...pre, rows: ele }));
             }}
           >
             {ele}
